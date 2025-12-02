@@ -24,7 +24,10 @@ class ApiService {
 
   // GET
   Future<List<Message>> getMessages() async {
-    final response = await http.get(Uri.parse(url));
+    final response = await http.get(
+      Uri.parse(url),
+      headers: {"Content-Type": "application/json"},
+    );
     if (response.statusCode == 200) {
       final List<dynamic> list = jsonDecode(response.body);
       return list
